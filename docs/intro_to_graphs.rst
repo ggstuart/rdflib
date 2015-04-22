@@ -13,8 +13,8 @@ RDFLib graphs override :meth:`~rdflib.graph.Graph.__iter__` in order to support 
 
 .. code-block:: python
 
-    for subject,predicate,obj in someGraph:
-       if not (subject,predicate,obj) in someGraph: 
+    for subject,predicate,obj in g:
+       if not (subject,predicate,obj) in g: 
           raise Exception("Iterator / Container Protocols are Broken!!")
 
 Contains check
@@ -22,10 +22,7 @@ Contains check
 
 Graphs implement :meth:`~rdflib.graph.Graph.__contains__`, so you can check if a triple is in a graph with ``triple in graph`` syntax::
 
-  from rdflib import URIRef
-  from rdflib.namespace import RDF 
-  bob = URIRef("http://example.org/people/bob")
-  if ( bob, RDF.type, FOAF.Person ) in graph: 
+  if ( bob, RDF.type, FOAF.Person ) in g: 
      print "This graph knows that Bob is a person!"
 	 
 Note that this triple does not have to be completely bound::
